@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function redis_cluster_status {
+function elasticsearch_status {
     echo "检查elasticsearch集群状态"
     container_is_exist $@
     if [[ ! $? -eq 0 ]]

@@ -14,24 +14,16 @@ import java.util.Date;
 @Document(indexName = "deepexi", type = "inf")
 public class Employee {
     private Long id;
-
     private String name;
-
     private String type;
-
     private Date createTime;
     private Date updateTime;
-
     private String url;
-
     private Integer readNumber;
     private Integer likeNumber;
-
     private String content;
-
     private String writer;
     private String resource;
-
     private Date publishTime;
 
     @Override

@@ -11,7 +11,7 @@ import java.util.Date;
  * @author RenWei
  * @date 2019/06/19
  */
-@Document(indexName = "deepexi", type = "inf")
+@Document(indexName = "inf", type = "employee")
 public class Employee {
     private Long id;
     private String name;

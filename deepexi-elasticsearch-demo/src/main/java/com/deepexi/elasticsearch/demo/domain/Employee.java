@@ -26,24 +26,6 @@ public class Employee {
     private String resource;
     private Date publishTime;
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", createTime=" + createTime +
-                ", updateTime=" + updateTime +
-                ", url='" + url + '\'' +
-                ", readNumber=" + readNumber +
-                ", likeNumber=" + likeNumber +
-                ", content='" + content + '\'' +
-                ", writer='" + writer + '\'' +
-                ", resource='" + resource + '\'' +
-                ", publishTime=" + publishTime +
-                '}';
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
@@ -138,5 +120,23 @@ public class Employee {
 
     public Date getPublishTime() {
         return publishTime;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type='" + type + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", url='" + url + '\'' +
+                ", readNumber=" + readNumber +
+                ", likeNumber=" + likeNumber +
+                ", content='" + content + '\'' +
+                ", writer='" + writer + '\'' +
+                ", resource='" + resource + '\'' +
+                ", publishTime=" + publishTime +
+                '}';
     }
 }

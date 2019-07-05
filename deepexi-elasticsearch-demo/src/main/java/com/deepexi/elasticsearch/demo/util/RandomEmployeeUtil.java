@@ -9,7 +9,7 @@ import java.util.Random;
  * @author renwei
  * @date 2019/5/23  11:56
  */
-public class RandomEmployeeUtil {
+public final class RandomEmployeeUtil {
 
     private RandomEmployeeUtil() {
     }

@@ -5,6 +5,12 @@ cd `dirname $0`
 . $PWD/elasticsearch.sh
 . $PWD/docker.sh
 
+# 修改内存权限
+sysctl -w vm.max_map_count=262144
+
+echo "当前用户拥有的内存权限:"
+sysctl -a|grep vm.max_map_count
+
 # 检查docker-compose环境
 docker_compose_check
 

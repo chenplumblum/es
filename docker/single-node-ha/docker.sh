@@ -26,6 +26,7 @@ function docker_compose_check {
             yum -y install python-pip
             pip install --upgrade pip
         fi
-        pip install docker-compose
+        pip install --upgrade setuptools==30.1.0
+        pip install docker-compose --ignore-installed requests
     fi
 }

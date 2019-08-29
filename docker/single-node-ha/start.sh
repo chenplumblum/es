@@ -5,6 +5,9 @@ cd `dirname $0`
 . $PWD/elasticsearch.sh
 . $PWD/docker.sh
 
+#JVM内存
+export JVM_MEMORY=${JVM_MEMORY}
+
 # 修改内存权限
 sysctl -w vm.max_map_count=262144
 

@@ -8,7 +8,7 @@ volumes:
 
 services:
   comp-elasticsearch-deepexi-9200:
-    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch:v1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch-not-expire:v1.0.0
     container_name: comp-elasticsearch-deepexi-9200
     restart: always
     environment:
@@ -16,8 +16,9 @@ services:
     - cluster.name=elasticsearch-cluster
     - bootstrap.memory_lock=true
     - discovery.zen.minimum_master_nodes=2
+    - xpack.security.enabled=false
     - discovery.zen.ping_timeout=30s
-    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    - "ES_JAVA_OPTS=-Xms${JVM_MEMORY}m -Xmx${JVM_MEMORY}m"
     - "discovery.zen.ping.unicast.hosts=comp-elasticsearch-deepexi-9201,comp-elasticsearch-deepexi-9202"
     ulimits:
       memlock:
@@ -41,8 +42,9 @@ services:
     - cluster.name=elasticsearch-cluster
     - bootstrap.memory_lock=true
     - discovery.zen.minimum_master_nodes=2
+    - xpack.security.enabled=false
     - discovery.zen.ping_timeout=30s
-    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    - "ES_JAVA_OPTS=-Xms${JVM_MEMORY}m -Xmx${JVM_MEMORY}m"
     - "discovery.zen.ping.unicast.hosts=comp-elasticsearch-deepexi-9200,comp-elasticsearch-deepexi-9202"
     ulimits:
       memlock:
@@ -66,8 +68,9 @@ services:
     - cluster.name=elasticsearch-cluster
     - bootstrap.memory_lock=true
     - discovery.zen.minimum_master_nodes=2
+    - xpack.security.enabled=false
     - discovery.zen.ping_timeout=30s
-    - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    - "ES_JAVA_OPTS=-Xms${JVM_MEMORY}m -Xmx${JVM_MEMORY}m"
     - "discovery.zen.ping.unicast.hosts=comp-elasticsearch-deepexi-9200,comp-elasticsearch-deepexi-9201"
     ulimits:
       memlock:

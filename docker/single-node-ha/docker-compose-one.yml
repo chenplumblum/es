@@ -1,0 +1,42 @@
+# elasticsearch版本是6.2.2
+version: '2.3'
+
+volumes:
+  elasticsearch-9200:
+
+services:
+  comp-elasticsearch-deepexi-9200:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.2
+    container_name: comp-elasticsearch-deepexi-9200
+    restart: always
+    environment:
+    - node.name=elasticsearch-9200
+    - cluster.name=elasticsearch-cluster
+    - bootstrap.memory_lock=true
+    - discovery.zen.minimum_master_nodes=2
+    - discovery.zen.ping_timeout=30s
+    - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+    - type: volume
+      source: elasticsearch-9200
+      target: /usr/share/elasticsearch/data
+    ports:
+    - 9200:9200
+    - 9300:9300
+    networks:
+    - elasticsearch-net
+  comp-elasticsearch-deepexi-cerebro:
+    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch-cerebro:v1.0.0
+    container_name: comp-elasticsearch-deepexi-cerebro
+    restart: always
+    ports:
+    - 9000:9000
+    networks:
+    - elasticsearch-net
+networks:
+  elasticsearch-net:
+    driver: bridge

@@ -14,6 +14,7 @@ services:
     - cluster.name=elasticsearch-cluster
     - bootstrap.memory_lock=true
     - discovery.zen.ping_timeout=30s
+    - discovery.type=single-node
     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:

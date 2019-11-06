@@ -3,12 +3,11 @@ version: '2.3'
 
 volumes:
   elasticsearch-9200:
-  elasticsearch-9201:
-  elasticsearch-9202:
+
 
 services:
   comp-elasticsearch-deepexi-9200:
-    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch-not-expire:v1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch:v1.0.0
     container_name: comp-elasticsearch-deepexi-9200
     restart: always
     environment:
@@ -16,9 +15,8 @@ services:
     - cluster.name=elasticsearch-cluster
     - bootstrap.memory_lock=true
     - discovery.zen.minimum_master_nodes=2
-    - xpack.security.enabled=false
     - discovery.zen.ping_timeout=30s
-    - "ES_JAVA_OPTS=-Xms${JVM_MEMORY}m -Xmx${JVM_MEMORY}m"
+    - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     - "discovery.zen.ping.unicast.hosts=comp-elasticsearch-deepexi-9201,comp-elasticsearch-deepexi-9202"
     ulimits:
       memlock:
@@ -31,58 +29,6 @@ services:
     ports:
     - 9200:9200
     - 9300:9300
-    networks:
-    - elasticsearch-net
-  comp-elasticsearch-deepexi-9201:
-    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch:v1.0.0
-    container_name: comp-elasticsearch-deepexi-9201
-    restart: always
-    environment:
-    - node.name=elasticsearch-9201
-    - cluster.name=elasticsearch-cluster
-    - bootstrap.memory_lock=true
-    - discovery.zen.minimum_master_nodes=2
-    - xpack.security.enabled=false
-    - discovery.zen.ping_timeout=30s
-    - "ES_JAVA_OPTS=-Xms${JVM_MEMORY}m -Xmx${JVM_MEMORY}m"
-    - "discovery.zen.ping.unicast.hosts=comp-elasticsearch-deepexi-9200,comp-elasticsearch-deepexi-9202"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-    - type: volume
-      source: elasticsearch-9201
-      target: /usr/share/elasticsearch/data
-    ports:
-    - 9201:9200
-    - 9301:9300
-    networks:
-    - elasticsearch-net
-  comp-elasticsearch-deepexi-9202:
-    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch:v1.0.0
-    container_name: comp-elasticsearch-deepexi-9202
-    restart: always
-    environment:
-    - node.name=elasticsearch-9202
-    - cluster.name=elasticsearch-cluster
-    - bootstrap.memory_lock=true
-    - discovery.zen.minimum_master_nodes=2
-    - xpack.security.enabled=false
-    - discovery.zen.ping_timeout=30s
-    - "ES_JAVA_OPTS=-Xms${JVM_MEMORY}m -Xmx${JVM_MEMORY}m"
-    - "discovery.zen.ping.unicast.hosts=comp-elasticsearch-deepexi-9200,comp-elasticsearch-deepexi-9201"
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-    volumes:
-    - type: volume
-      source: elasticsearch-9202
-      target: /usr/share/elasticsearch/data
-    ports:
-    - 9202:9200
-    - 9302:9300
     networks:
     - elasticsearch-net
   comp-elasticsearch-deepexi-cerebro:

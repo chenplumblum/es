@@ -12,7 +12,6 @@ services:
     environment:
     - node.name=elasticsearch-9200
     - bootstrap.memory_lock=true
-    - discovery.zen.minimum_master_nodes=2
     - discovery.zen.ping_timeout=30s
     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:

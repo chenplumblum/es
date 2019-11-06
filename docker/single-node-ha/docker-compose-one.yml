@@ -14,7 +14,6 @@ services:
     - bootstrap.memory_lock=true
     - network.publish_host=0.0.0.0
     - transport.tcp.port=9200
-    - discovery.zen.ping_timeout=30s
     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
     ulimits:
       memlock:
@@ -30,7 +29,7 @@ services:
     networks:
     - elasticsearch-net
   comp-elasticsearch-deepexi-cerebro:
-    image: docker.elastic.codeepexi-middleware/elasticsearch-cerebro:v1.0.0
+    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch-cerebro:v1.0.0
     container_name: comp-elasticsearch-deepexi-cerebro
     restart: always
     ports:

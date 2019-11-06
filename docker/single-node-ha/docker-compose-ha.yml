@@ -33,7 +33,7 @@ services:
     networks:
     - elasticsearch-net
   comp-elasticsearch-deepexi-9201:
-    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch:v1.0.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.2
     container_name: comp-elasticsearch-deepexi-9201
     restart: always
     environment:
@@ -58,7 +58,7 @@ services:
     networks:
     - elasticsearch-net
   comp-elasticsearch-deepexi-9202:
-    image: registry.cn-hangzhou.aliyuncs.com/deepexi-middleware/elasticsearch:v1.0.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.7.2
     container_name: comp-elasticsearch-deepexi-9202
     restart: always
     environment:

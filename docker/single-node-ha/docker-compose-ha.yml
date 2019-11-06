@@ -53,8 +53,8 @@ services:
       source: elasticsearch-9201
       target: /usr/share/elasticsearch/data
     ports:
-    - 9201:9200
-    - 9301:9300
+    - 9201:9201
+    - 9301:9301
     networks:
     - elasticsearch-net
   comp-elasticsearch-deepexi-9202:
@@ -78,8 +78,8 @@ services:
       source: elasticsearch-9202
       target: /usr/share/elasticsearch/data
     ports:
-    - 9202:9200
-    - 9302:9300
+    - 9202:9202
+    - 9302:9302
     networks:
     - elasticsearch-net
   comp-elasticsearch-deepexi-cerebro:

@@ -20,10 +20,6 @@ services:
       memlock:
         soft: -1
         hard: -1
-    volumes:
-    - type: volume
-      source: elasticsearch-9200
-      target: /usr/share/elasticsearch/data
     ports:
     - 9200:9200
     - 9300:9300
